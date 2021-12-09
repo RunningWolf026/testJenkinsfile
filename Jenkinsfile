@@ -21,8 +21,6 @@ pipeline {
 	
 	environment {
 		branchname = "main"
-		//metric_dir = "E:\\Architecture_Metrics\\MetricFiles"
-		metric_dir = "\\\\SERVER-CUBICOST\\TAS_ArchitectureMetrics"
 	}
 
     stages{
@@ -38,25 +36,7 @@ pipeline {
 			steps{
 				echo("拉取分支(${branchname})代码")
 				script{
-					    def config = [
-								scmType                  : Constants.SCM_GIT,
-								scmConfig :[
-									[
-									scmUrl:"ssh://git@github.com:RunningWolf026/testJenkinsfile.git",
-									branch : "${branchname}",
-									]
-								],
-								submoduleOption:[
-											recursiveSubmodules  : true
-								],
-								cleanBeforeCheckout      : true,
-								disableLFS               : false,
-								stagePrepareExtendName   : "准备",
-								stageScmExtendName       : "拉取",
-								changelog                : true
-						]
 						echo("stageScm")
-						stageScm(config) 
 					}
 			}
 		}
